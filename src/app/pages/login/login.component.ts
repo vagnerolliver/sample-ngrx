@@ -3,8 +3,6 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 
-import {LoginService} from './login.service';
-
 import {Login, Logout} from './login.actions';
 import {AppState} from '../../store/reducers';
 
@@ -20,7 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private loginService: LoginService,
     private store: Store<AppState>) {
 
     this.form = fb.group({
