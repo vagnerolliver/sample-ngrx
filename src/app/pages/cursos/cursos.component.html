@@ -1,0 +1,14 @@
+<div *ngIf="isLoggedIn$ | async; else ELSE">
+  <span *ngIf="isLoggedIn$ | async">Você esta logado</span>
+  <hr>
+  <p>
+    cursos works!
+  </p>
+
+  <button (click)="logout()" *ngIf="isLoggedIn$ | async">LOGOUT</button>
+</div>
+
+<ng-template #ELSE>
+  Favor, fazer o login.
+</ng-template>
+
