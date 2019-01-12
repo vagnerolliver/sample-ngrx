@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 
 import {AppState} from '../../store/reducers';
-import {Logout} from '../login/login.actions';
-import {Observable} from 'rxjs';
+import {Logout} from '../../store/actions/auth.actions';
+
+import {isLoggedIn, isLoggedOut} from '../../modules/auth/auth.selectors';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.css']
+  styleUrls: ['./cursos.component.sass']
 })
 export class CursosComponent implements OnInit {
 
@@ -21,14 +23,20 @@ export class CursosComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
+    // this.isLoggedIn$ = this.store
+    //   .pipe(
+    //     map(state => state.auth.loggedIn)
+    //   );
+
     this.isLoggedIn$ = this.store
       .pipe(
-        map(state => state.login.loggedIn)
+        select(isLoggedIn)
       );
+
 
     this.isLoggedOut$ = this.store
       .pipe(
-        map(state => !state.login.loggedIn)
+        select(isLoggedOut)
       );
   }
 

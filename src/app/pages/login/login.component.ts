@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 
-import {Login, Logout} from './login.actions';
+import {Login, Logout} from '../../store/actions/auth.actions';
 import {AppState} from '../../store/reducers';
 
 @Component({

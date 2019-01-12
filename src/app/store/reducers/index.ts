@@ -9,31 +9,31 @@ import { environment } from '../../../environments/environment';
 
 import {User} from '../../models/user';
 
-import {LoginActions, LoginActionTypes} from '../../pages/login/login.actions';
+import {AuthActions, AuthActionTypes} from '../actions/auth.actions';
 
-export interface LoginState {
+export interface AuthState {
   loggedIn: boolean;
   user: User;
 }
 
-export const initialLoginState: LoginState = {
+export const initialAuthStatus: AuthState = {
   loggedIn: false,
   user: undefined
 };
 
 export interface AppState {
-  login: LoginState;
+  auth: AuthState;
 }
 
-function loginReducer(state = initialLoginState, action: LoginActions): LoginState {
+function authReducer(state = initialAuthStatus, action: AuthActions): AuthState {
   switch (action.type) {
-    case LoginActionTypes.LoginAction:
+    case AuthActionTypes.LoginAction:
       return {
         loggedIn: true,
         user: action.payload.user
       };
 
-    case LoginActionTypes.LogoutAction:
+    case AuthActionTypes.LogoutAction:
       return {
         loggedIn: false,
         user: undefined
@@ -45,7 +45,7 @@ function loginReducer(state = initialLoginState, action: LoginActions): LoginSta
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  login: loginReducer,
+  auth: authReducer
 };
 
 
