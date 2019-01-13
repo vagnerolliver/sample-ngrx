@@ -5,6 +5,9 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
+import {routerReducer} from '@ngrx/router-store';
+import {storeFreeze} from 'ngrx-store-freeze';
+
 import { environment } from '../../../environments/environment';
 
 import {User} from '../../models/user';
@@ -23,6 +26,7 @@ export const initialAuthStatus: AuthState = {
 
 export interface AppState {
   auth: AuthState;
+  router: any; // TODO entender melhor tipagem
 }
 
 function authReducer(state = initialAuthStatus, action: AuthActions): AuthState {
@@ -45,8 +49,9 @@ function authReducer(state = initialAuthStatus, action: AuthActions): AuthState 
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  auth: authReducer
+  auth: authReducer,
+  router: routerReducer
 };
 
 
-export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [storeFreeze] : [];

@@ -13,6 +13,9 @@ import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
+
+import {CustomSerializer} from './shared/utils';
 
 import { reducers, metaReducers } from './store/reducers';
 
@@ -30,10 +33,11 @@ import { AuthEffects } from './store/effects/auth.effects';
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([]),
     EffectsModule.forFeature([AuthEffects]),
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'})
   ],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
