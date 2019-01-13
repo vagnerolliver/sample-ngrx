@@ -17,7 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './store/reducers';
 
 import { AppEffects } from './store/effects/app.effects';
-import { AuthEffects } from './modules/auth/auth.effects';
+import { AuthEffects } from './store/effects/auth.effects';
 
 @NgModule({
   declarations: [
