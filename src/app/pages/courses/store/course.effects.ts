@@ -5,7 +5,6 @@ import {select, Store} from '@ngrx/store';
 import {filter, map, mergeMap, withLatestFrom} from 'rxjs/operators';
 import {CoursesService} from '../../../services/courses.service';
 import {AllCoursesLoaded, AllCoursesRequested, CourseActionTypes} from './course.actions';
-import {selectAllCourses} from './course.seletors';
 
 
 @Injectable()
