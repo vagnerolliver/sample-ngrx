@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
-import { AuthEffects } from '../../store/effects/auth.effects';
+import { AuthEffects } from './auth.effects';
 
 describe('AuthEffects', () => {
   let actions$: Observable<any>;

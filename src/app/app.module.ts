@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -18,7 +19,6 @@ import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-s
 import {CustomSerializer} from './shared/utils';
 
 import { reducers, metaReducers } from './store/reducers';
-
 import { AppEffects } from './store/effects/app.effects';
 import { AuthEffects } from './store/effects/auth.effects';
 
@@ -27,14 +27,15 @@ import { AuthEffects } from './store/effects/auth.effects';
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     ModulesModule,
     LoginModule,
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([]),
-    EffectsModule.forFeature([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects]),
+    // EffectsModule.forFeature([AuthEffects]),
     StoreRouterConnectingModule.forRoot({stateKey: 'router'})
   ],
   providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
