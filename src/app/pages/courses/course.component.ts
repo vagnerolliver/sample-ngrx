@@ -12,6 +12,8 @@ import {Logout} from '../../store/auth.actions';
 
 import { AllCoursesRequested} from './store/course.actions';
 
+import {isLoggedIn, isLoggedOut} from '../../modules/auth/auth.selectors';
+
 @Component({
   selector: 'app-cursos',
   templateUrl: './course.component.html',
@@ -26,16 +28,7 @@ export class CourseComponent implements OnInit {
               private courseService: CoursesService) {}
 
   ngOnInit() {
-
-    //this.courseService.findAllCourses().subscribe(
-    // (carga: Course[]) => {
-    //    console.log(carga);
-    //
-    // }
-    // );
-
     this.store.dispatch(new AllCoursesRequested());
-
 
     // this.isLoggedIn$ = this.store
     //   .pipe(
