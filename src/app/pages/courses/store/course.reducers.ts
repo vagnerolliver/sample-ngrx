@@ -13,11 +13,15 @@ import {storeFreeze} from 'ngrx-store-freeze';
 import {Course} from '../../../models/course';
 import {CourseActions, CourseActionTypes} from './course.actions';
 
-export interface CourseState {
+export interface CoursesState {
   courses: Course[];
 }
 
-export function coursesReducer(state, action: CourseActions): CourseState {
+export const initialCoursetate: CoursesState = {
+  courses: []
+};
+
+export function coursesReducer(state = initialCoursetate, action: CourseActions): CoursesState {
   switch (action.type) {
     case CourseActionTypes.AllCoursesLoad:
       return {
