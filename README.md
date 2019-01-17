@@ -28,5 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Helpers
 
-ng generate container UsersPage --state reducers/index.ts --stateInterface MyState
+ng generate container UsersPage --state reducers/auth.reducers.ts --stateInterface MyState
 

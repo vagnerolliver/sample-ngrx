@@ -5,7 +5,7 @@ import {tap} from 'rxjs/operators';
 
 import {select, Store} from '@ngrx/store';
 
-import {AppState} from '../../store/reducers';
+import {AppState} from '../../store/auth.reducers';
 
 import {isLoggedIn} from './auth.selectors';
 

@@ -13,7 +13,6 @@ import {CourseComponent} from './course.component';
 
 import {CourseEffects} from './store/course.effects';
 import {coursesReducer} from './store/course.reducers';
-import * as fromAuth from './store/course.reducers';
 
 @NgModule({
   declarations: [CourseComponent],
@@ -21,7 +20,7 @@ import * as fromAuth from './store/course.reducers';
     CommonModule,
     CourseRoutingModule,
     HttpClientModule,
-    StoreModule.forFeature('auth', fromAuth.coursesReducer),
+    StoreModule.forFeature('payload', coursesReducer),
     EffectsModule.forRoot([CourseEffects])
   ],
   providers: [CoursesService]

@@ -1,18 +1,15 @@
 import {
-  ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
   MetaReducer
 } from '@ngrx/store';
 import {routerReducer} from '@ngrx/router-store';
 import {storeFreeze} from 'ngrx-store-freeze';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
-import {User} from '../../models/user';
+import {User} from '../models/user';
 
-import {AuthActions, AuthActionTypes} from '../actions/auth.actions';
+import {AuthActions, AuthActionTypes} from './auth.actions';
 
 export interface AuthState {
   loggedIn: boolean;
