@@ -5,6 +5,8 @@
         <a [routerLink]="'login'" routerLinkActive="is-active">Login</a>
         <span>|</span>
         <a [routerLink]="'cursos'" routerLinkActive="is-active">Cursos</a>
+        <span>|</span>
+        <a [routerLink]="'animes'" routerLinkActive="is-active">Anime</a>
       </nav>
     </div>
     <div class="column" *ngIf="isLoggedIn$ | async">
