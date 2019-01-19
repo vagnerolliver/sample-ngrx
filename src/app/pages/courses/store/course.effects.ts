@@ -16,7 +16,7 @@ export class CourseEffects {
     .pipe(
       ofType<AllCoursesRequested>(CourseActionTypes.AllCoursesRequested),
       withLatestFrom(this.store.pipe(select(allCoursesLoaded))),
-      filter(([action, allCoursesLoaded]) => !allCoursesLoaded),
+      filter(([action, isLoaded]) => !isLoaded),
       mergeMap(() => this.coursesService.findAllCourses()),
       map(courses => new AllCoursesLoaded({courses}))
     );
