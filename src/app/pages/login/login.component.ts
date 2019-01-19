@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     const user = this.form.value;

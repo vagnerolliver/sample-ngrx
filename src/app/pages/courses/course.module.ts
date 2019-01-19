@@ -20,7 +20,7 @@ import {coursesReducer} from './store/course.reducers';
     CommonModule,
     CourseRoutingModule,
     HttpClientModule,
-    StoreModule.forFeature('payload', coursesReducer),
+    StoreModule.forFeature('courses', coursesReducer),
     EffectsModule.forRoot([CourseEffects])
   ],
   providers: [CoursesService]

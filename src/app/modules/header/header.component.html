@@ -1,7 +1,15 @@
-<div class="column is-centered">
-  <nav>
-    <a [routerLink]="'login'" routerLinkActive="is-active">Login</a>
-    |
-    <a [routerLink]="'cursos'" routerLinkActive="is-active">Cursos</a>
-  </nav>
-</div>
+<header>
+  <div class="columns">
+    <div class="column is-centered">
+      <nav>
+        <a [routerLink]="'login'" routerLinkActive="is-active">Login</a>
+        <span>|</span>
+        <a [routerLink]="'cursos'" routerLinkActive="is-active">Cursos</a>
+      </nav>
+    </div>
+    <div class="column" *ngIf="isLoggedIn$ | async">
+      <span class="is-success">Você esta logado | </span>
+      <button (click)="logout()">LOGOUT</button>
+    </div>
+  </div>
+</header>

@@ -1,24 +1,32 @@
 import {Course} from '../../../models/course';
 import {CourseActions, CourseActionTypes} from './course.actions';
 
-export interface CoursesState {
-  courses: Course[];
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+
+export interface CoursesState extends EntityState<Course> {
   allCoursesLoaded: boolean;
 }
 
-export const initialCoursetate: CoursesState = {
-  courses: [],
-  allCoursesLoaded: false
-};
+export const adapter: EntityAdapter<Course> =
+  createEntityAdapter<Course>();
 
-export function coursesReducer(state = initialCoursetate, action: CourseActions): CoursesState {
+export const initialCoursesState: CoursesState = adapter.getInitialState({
+  allCoursesLoaded: false
+});
+
+export function coursesReducer(state = initialCoursesState, action: CourseActions): CoursesState {
   switch (action.type) {
     case CourseActionTypes.allCoursesLoaded:
-      return {
-        courses: [...action.payload.courses], allCoursesLoaded: true
-      }
+      return adapter.addAll(action.payload.courses, {...state, allCoursesLoaded: true});
 
     default:
       return state;
   }
 }
+
+export const {
+  selectAll,
+  selectEntities,
+  selectIds,
+  selectTotal
+} = adapter.getSelectors();

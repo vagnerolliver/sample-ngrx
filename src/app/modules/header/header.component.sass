@@ -1,19 +1,33 @@
 $primary: '#000'
 $white: '#fff'
 
-nav
+.columns
   align-items: center
   display: flex
-  justify-content: center
+  justify-content: space-between
 
-  a
-    font-size: 1.5rem
-    font-weight: 500
-    padding: 1.5rem
+header
+  border-bottom: 1px solid grey
+  padding-bottom: 2rem
 
-    &.is-active
-      color: red
+  nav
+    align-items: center
+    display: flex
 
-      &::before
-        content: '> '
+    a
+      border-bottom: 1px solid transparent
+      color: grey
+      display: block
+      font-weight: 500
+      padding-bottom: .1rem
+      margin-right: 1rem
+      text-transform: uppercase
 
+      &.is-active
+        border-color: purple
+        color: purple
+        font-weight: 700
+
+    span
+      display: block
+      margin-right: 1rem

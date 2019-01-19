@@ -17,11 +17,7 @@ export class CoursesService extends Cnt {
   }
 
   findAllCourses(): Observable<Course[]> {
-      console.log(this.connectTo('courses', ''));
-
-     return this.http.get(this.connectTo('courses', ''))
-      .pipe(
-       map(res => res['payload'])
-     );
+      return this.http.get(this.connectTo('courses', ''))
+      .pipe(map(res => res['payload']));
   }
 }

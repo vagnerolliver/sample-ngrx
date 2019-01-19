@@ -1,18 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Observable, timer } from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import {CoursesService} from '../../services/courses.service';
+import { select, Store } from '@ngrx/store';
 
-import {select, Store} from '@ngrx/store';
-
-import {AppState} from '../../store/auth.reducers';
-import {Logout} from '../../store/auth.actions';
-
-import { AllCoursesRequested} from './store/course.actions';
-
-import {isLoggedIn, isLoggedOut} from '../../modules/auth/auth.selectors';
+import { AppState } from '../../store/auth.reducers';
+import { AllCoursesRequested } from './store/course.actions';
+import { selectAllCourses } from './store/course.seletors';
 
 @Component({
   selector: 'app-cursos',
@@ -20,35 +14,12 @@ import {isLoggedIn, isLoggedOut} from '../../modules/auth/auth.selectors';
   styleUrls: ['./course.component.sass']
 })
 export class CourseComponent implements OnInit {
+  allCourses$: Observable<boolean>;
 
-  isLoggedIn$: Observable<boolean>;
-  isLoggedOut$: Observable<boolean>;
-
-  constructor(private store: Store<AppState>,
-              private courseService: CoursesService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.store.dispatch(new AllCoursesRequested());
-
-    // this.isLoggedIn$ = this.store
-    //   .pipe(
-    //     map(state => state.auth.loggedIn)
-    //   );
-
-    this.isLoggedIn$ = this.store
-      .pipe(
-        select(isLoggedIn)
-      );
-
-
-    this.isLoggedOut$ = this.store
-      .pipe(
-        select(isLoggedOut)
-      );
+    this.allCourses$ = this.store.pipe(select(selectAllCourses));
   }
-
-  logout() {
-    this.store.dispatch(new Logout());
-  }
-
 }

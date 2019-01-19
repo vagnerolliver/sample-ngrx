@@ -7,8 +7,8 @@ import {RouterModule} from '@angular/router';
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
   imports: [
-    CommonModule,[
-    RouterModule]
+    CommonModule,
+    RouterModule
   ]
 })
 export class ModulesModule { }

@@ -1,13 +1,8 @@
-<div *ngIf="isLoggedIn$ | async">
-  <span class="is-success" *ngIf="isLoggedIn$ | async">Você esta logado</span>
+<h3>Meus Cursos</h3>
 
-  <p>
-    lista de cursos.
-  </p>
-
-  <button (click)="logout()" *ngIf="isLoggedIn$ | async">LOGOUT</button>
-</div>
-
-<div *ngIf="isLoggedOut$ | async">
- favor, faça o login novament.
-</div>
+<ul class="courses">
+  <li class="course-item" *ngFor="let item of allCourses$ | async">
+    <img src="{{ item.iconUrl }}" alt="">
+    <h2 class="course-name">{{ item.description }}</h2>
+  </li>
+</ul>
