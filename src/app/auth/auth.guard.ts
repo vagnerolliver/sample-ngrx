@@ -7,7 +7,7 @@ import {select, Store} from '@ngrx/store';
 
 import {AppState} from '../store/auth.reducers';
 
-import {isLoggedIn} from './auth.selectors';
+import {isLoggedIn} from '../store/auth.selectors';
 
 
 @Injectable({

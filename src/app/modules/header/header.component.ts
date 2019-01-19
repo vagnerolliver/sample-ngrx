@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { AppState } from '../../store/auth.reducers';
-import { isLoggedIn, isLoggedOut } from '../../auth/auth.selectors';
+import { isLoggedIn, isLoggedOut } from '../../store/auth.selectors';
 import { Observable } from 'rxjs';
 import { Logout } from '../../store/auth.actions';
 import { map, tap } from 'rxjs/operators';

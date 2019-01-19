@@ -13,7 +13,7 @@ export class AllCoursesRequested implements Action {
 export class AllCoursesLoaded implements Action {
   readonly type = CourseActionTypes.allCoursesLoaded;
 
-  constructor(public payload: {  courses: Course}) {}
+  constructor(public payload: {  courses: Course[]}) {}
 }
 
 export type CourseActions =  AllCoursesRequested | AllCoursesLoaded;
